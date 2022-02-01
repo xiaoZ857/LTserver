@@ -13,7 +13,7 @@
 <body>
 <form action="login" method="POST">
     E-mail:<input type="text" name="email"><br>
-    password:<input type="password" name="password"><br>
+    Password:<input type="password" name="Password"><br>
     <input type="reset" value="reset">
     <input type="submit" value="login">
 </form>
