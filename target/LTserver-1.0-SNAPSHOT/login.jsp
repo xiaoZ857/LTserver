@@ -11,11 +11,12 @@
     <title>login</title>
 </head>
 <body>
-<form action="login" method="POST">
-    E-mail:<input type="text" name="email"><br>
-    Password:<input type="password" name="Password"><br>
-    <input type="reset" value="reset">
-    <input type="submit" value="login">
+<h1>login</h1>
+<form action="LoginServlet" method="post">
+    <p>E-mail:<input type="text" name="email"></p>
+    <p>Password:<input type="password" name="Password"></p>
+    <p><input type="submit" value="login"> <input type="reset" value="reset"></p>
+    <p><a href="register.jsp">go register</a></p>
 </form>
 </body>
 </html>

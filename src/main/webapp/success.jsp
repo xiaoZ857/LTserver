@@ -11,6 +11,6 @@
     <title>success</title>
 </head>
 <body>
-success!
+<%--<% out.println(request.getAttribute("msg")); %>--%>
 </body>
 </html>

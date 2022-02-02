@@ -5,31 +5,20 @@
   Time: 22:58
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>register</title>
 </head>
 <body>
-<form action="register" method="POST">
-    <label>
-        Name:
-        <input type="text" name="Name">
-    </label><br>
-    <label>
-        E-mail:
-        <input type="text" name="email">
-    </label><br>
-    <label>
-        Password:
-        <input type="password" name="Password">
-    </label><br>
-    <label>
-        confirm_password:
-        <input type="password" name="confirm_password">
-    </label><br>
-    <input type="reset" value="reset">
-    <input type="submit" value="register">
+<h1>register</h1>
+<form action="RegistServlet" method="post">
+    <p>Name:<input type="text" name="Name"></p>
+    <p>E-mail:<input type="text" name="email"></p>
+    <p>Password:<input type="password" name="Password"></p>
+    <p><input type="submit" value="register"> <input type="reset" value="reset"></p>
+    <p><a href="login.jsp">go login</a></p>
 </form>
 </body>
 </html>

@@ -11,6 +11,6 @@
     <title>error</title>
 </head>
 <body>
-error!
+<%--<% out.println(request.getAttribute("msg")); %>--%>
 </body>
 </html>
