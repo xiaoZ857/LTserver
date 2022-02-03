@@ -13,7 +13,6 @@ public class RegistServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
 
-
         String username = request.getParameter("Name");
         String email = request.getParameter("email");
         String password = request.getParameter("Password");
@@ -35,6 +34,7 @@ public class RegistServlet extends HttpServlet {
             System.out.println("register success");
         }else{
             response.sendRedirect("register.jsp");
+            System.out.println("register fail");
         }
 
 
