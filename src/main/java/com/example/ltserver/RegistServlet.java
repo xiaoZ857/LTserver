@@ -18,7 +18,7 @@ public class RegistServlet extends HttpServlet {
         String password = request.getParameter("Password");
 
         //调用UserDao、UserDaoImpl类及方法
-        UserDao ud = new UserDaoImpl();
+        UserDao ud = new UserDao();
         User u = new User();
 
         //添加用户提交的数据到数据库

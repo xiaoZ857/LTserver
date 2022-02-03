@@ -1,13 +1,15 @@
 package com.example.ltserver;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "LoginServlet", value = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //设置字符
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
@@ -18,10 +20,10 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("Password");
 
         //调用UserDao、UserDaoImpl类及方法
-        UserDao ud = new UserDaoImpl();
+        UserDao ud = new UserDao();
 
         //处理结果跳转相应页面
-        boolean flag = ud.checkLogin(username,email, password);
+        boolean flag = ud.checkLogin(username, password);
         if(flag){
             //将提交的用户名存入session，前台登录成功页面调取
             HttpSession session = request.getSession();
@@ -34,7 +36,7 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         doPost(request,response);
     }
 }
