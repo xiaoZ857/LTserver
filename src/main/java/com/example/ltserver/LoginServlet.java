@@ -16,7 +16,6 @@ public class LoginServlet extends HttpServlet {
 
         //转换字符串
         String username = request.getParameter("Name");
-        String email = request.getParameter("email");
         String password = request.getParameter("Password");
 
         //调用UserDao、UserDaoImpl类及方法

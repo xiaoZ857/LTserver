@@ -7,7 +7,7 @@ public class UserDao {
         boolean flag = false;
         Connection conn = null;
         PreparedStatement pst = null;
-        String sql = null;
+        String sql;
         try{
 
         /*
@@ -35,11 +35,11 @@ public class UserDao {
 
     public boolean checkLogin(String username, String password) {
         boolean flag = false;
-        Connection conn = null;
+        Connection conn;
         Statement st = null;
         ResultSet rs = null;
         /*
-        创建Connnection, Statement, ResultSet对象
+        创建Connection, Statement, ResultSet对象
         调用验证登录的方法
         */
         String sql ="select * from students where Name = '"+ username +"'";
