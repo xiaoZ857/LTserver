@@ -5,9 +5,9 @@ public class JDBCSaveTest {
         //测试添加数据到数据库
         UserDao ud = new UserDao();
         User u = new User();
-        u.setUsername("1");
+        u.setUsername("5");
         u.setEmail("1");
-        u.setPassword("1");
+        u.setPassword("3");
         boolean flag = ud.save(u);
         if(flag){
             System.out.println("测试：数据添加到数据库成功！");

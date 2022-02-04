@@ -1,5 +1,6 @@
 package com.example.ltserver;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +9,7 @@ import java.io.IOException;
 
 @WebServlet(name = "RegistServlet", value = "/RegistServlet")
 public class RegistServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
@@ -16,31 +17,45 @@ public class RegistServlet extends HttpServlet {
         String username = request.getParameter("Name");
         String email = request.getParameter("email");
         String password = request.getParameter("Password");
+        String rpwd = request.getParameter("rpwd");
 
-        //调用UserDao、UserDaoImpl类及方法
+        if(username==null||username.trim().isEmpty()){
+            request.setAttribute("msg", "username can not be empty");
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            return;
+        }
+        if(password==null||password.trim().isEmpty()){
+            request.setAttribute("msg", "password can not be empty");
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            return;
+        }
+        if(email==null||email.trim().isEmpty()){
+            request.setAttribute("msg", "email can not be empty");
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            return;
+        }
+        if(!password.equals(rpwd)){
+            request.setAttribute("msg", "two passwords are inconsistent");
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            return;
+        }
         UserDao ud = new UserDao();
         User u = new User();
-
-        //添加用户提交的数据到数据库
         u.setUsername(username);
         u.setEmail(email);
         u.setPassword(password);
-
-        //处理结果跳转相应页面
         boolean flag = ud.save(u);
         if(flag){
-            //注册成功后跳转
             response.sendRedirect("login.jsp");
-            System.out.println("register success");
         }else{
-            response.sendRedirect("register.jsp");
-            System.out.println("register fail");
+            request.setAttribute("msg", "the email is exist");
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
         }
-
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         doPost(request,response);
     }
 }
+
