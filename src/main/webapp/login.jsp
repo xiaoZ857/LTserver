@@ -22,5 +22,8 @@
     <p><input type="submit" value="login"> <input type="reset" value="reset"></p>
     <p><a href="register.jsp">go register</a></p>
 </form>
+<% String msg;
+    msg = (String)request.getAttribute("msg");
+    out.println(msg);%>
 </body>
 </html>

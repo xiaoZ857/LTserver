@@ -2,8 +2,8 @@ package com.example.ltserver;
 
 import java.sql.*;
 
-public class UserDao {
-    public boolean save(User user) {
+public class UserDao{
+    public boolean save(User user){
         boolean flag = false;
         Connection conn = null;
         PreparedStatement pst = null;
@@ -38,7 +38,7 @@ public class UserDao {
         return flag;
     }
 
-    public boolean checkLogin(String email, String password) {
+    public boolean checkLogin(String email, String password){
         boolean flag = false;
         Connection conn;
         Statement st = null;
@@ -64,5 +64,29 @@ public class UserDao {
         }
         return flag;
     }
+
+    public boolean checkActive(String email){
+        boolean vali = false;
+        Connection conn;
+        Statement st = null;
+        ResultSet rs = null;
+        String sql ="select * from students where email = '"+ email +"'";
+        conn = DBUtil.getConnection();
+        try{
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()){
+                if(rs.getInt("state")==1){
+                    vali = true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(rs, st, conn);
+        }
+        return vali;
+    }
+
 
 }

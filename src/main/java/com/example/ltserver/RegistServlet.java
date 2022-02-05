@@ -1,5 +1,6 @@
 package com.example.ltserver;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,15 +44,22 @@ public class RegistServlet extends HttpServlet {
         }
         UserDao ud = new UserDao();
         User u = new User();
+        MailUtils m = new MailUtils();
         u.setUsername(username);
         u.setEmail(email);
         u.setPassword(MD5Util.encode2hex(password));
         u.setState(0);
         u.setCode(code);
         u.setTime(new Date());
+//        String context =
         boolean flag = ud.save(u);
         if(flag){
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("activePage.jsp");
+            try {
+                m.sendMail(email,"L&T project activate URL","please use this URL to activate your account:");
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
         }else{
             request.setAttribute("msg", "the email is exist");
             request.getRequestDispatcher("/register.jsp").forward(request, response);
