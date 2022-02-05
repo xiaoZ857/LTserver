@@ -11,7 +11,10 @@
   <title>login fail!</title>
 </head>
 <body>
-<h1>login fail!</h1>
+<h1>login fail!</h1><br>
+<% String msg;
+  msg = (String)request.getAttribute("msg");
+  out.println(msg);%><br>
 <p><a href="login.jsp">login again</a></p>
 </body>
 </html>

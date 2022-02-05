@@ -17,12 +17,13 @@ public class UserDao {
         String name = user.getUsername();
         String email = user.getEmail();
         String password = user.getPassword();
-//        int state = user.getState();
-//        String code = user.getCode();
-//        Date time = user.getTime();
+        int state = user.getState();
+        String code = user.getCode();
+        Date time = (Date) user.getTime();
+
         conn = DBUtil.getConnection();
-        //sql = "insert into students(name,email,password,state,code,time) values('"+name+"','"+email+"','"+password+"','"+state+"','"+code+"','"+time+"')";
-        sql = "insert into students(name,email,password) values('"+name+"','"+email+"','"+password+"')";
+        sql = "insert into students(name,email,password,state,code,time) values('"+name+"','"+email+"','"+password+"','"+state+"','"+code+"','"+time+"')";
+//        sql = "insert into students(name,email,password) values('"+name+"','"+email+"','"+password+"')";
         pst = conn.prepareStatement(sql);
         int row = pst.executeUpdate();
         if(row>0){
@@ -52,7 +53,7 @@ public class UserDao {
             st = conn.createStatement();
             rs = st.executeQuery(sql);
             while (rs.next()){
-                if(rs.getString("password").equals(password)){
+                if(rs.getString("password").equals(MD5Util.encode2hex(password))){
                     flag = true;
                 }
             }

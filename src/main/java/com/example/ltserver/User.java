@@ -8,7 +8,7 @@ public class User {
     protected String email;
     protected String code;
     protected int state;
-    protected Date time;
+    protected java.sql.Date time;
 
     public String getUsername() {
         return username;
@@ -44,7 +44,7 @@ public class User {
 
     public Date getTime(){return time;}
 
-    public void setTime(Date time){this.time=time;}
+    public void setTime(Date time){this.time= (java.sql.Date) time;}
 
 //    @Override
 //    public String toString() {
