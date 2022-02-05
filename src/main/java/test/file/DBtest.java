@@ -1,4 +1,6 @@
-package com.example.ltserver;
+package test.file;
+
+import com.example.ltserver.DBUtil;
 
 import java.sql.Connection;
 public class DBtest {

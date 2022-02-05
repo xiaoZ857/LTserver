@@ -14,11 +14,15 @@ public class UserDao {
         创建连接Connection对象和Statement对象
         调用插入数据到数据库的方法
         */
-        String Name = user.getUsername();
+        String name = user.getUsername();
         String email = user.getEmail();
-        String Password = user.getPassword();
+        String password = user.getPassword();
+//        int state = user.getState();
+//        String code = user.getCode();
+//        Date time = user.getTime();
         conn = DBUtil.getConnection();
-        sql = "insert into students(Name,email,Password) values('"+Name+"','"+email+"','"+Password+"')";
+        //sql = "insert into students(name,email,password,state,code,time) values('"+name+"','"+email+"','"+password+"','"+state+"','"+code+"','"+time+"')";
+        sql = "insert into students(name,email,password) values('"+name+"','"+email+"','"+password+"')";
         pst = conn.prepareStatement(sql);
         int row = pst.executeUpdate();
         if(row>0){
@@ -33,7 +37,7 @@ public class UserDao {
         return flag;
     }
 
-    public boolean checkLogin(String username, String password) {
+    public boolean checkLogin(String email, String password) {
         boolean flag = false;
         Connection conn;
         Statement st = null;
@@ -42,7 +46,7 @@ public class UserDao {
         创建Connection, Statement, ResultSet对象
         调用验证登录的方法
         */
-        String sql ="select * from students where Name = '"+ username +"'";
+        String sql ="select * from students where email = '"+ email +"'";
         conn = DBUtil.getConnection();
         try {
             st = conn.createStatement();

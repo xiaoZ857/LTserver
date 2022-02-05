@@ -1,4 +1,4 @@
-package com.example.ltserver;
+package test.file;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

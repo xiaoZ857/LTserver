@@ -1,4 +1,4 @@
-package com.example.ltserver;
+package test.file;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -14,9 +14,9 @@ public class RegistServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
 
-        String username = request.getParameter("Name");
+        String username = request.getParameter("name");
         String email = request.getParameter("email");
-        String password = request.getParameter("Password");
+        String password = request.getParameter("password");
         String rpwd = request.getParameter("rpwd");
 
         if(username==null||username.trim().isEmpty()){

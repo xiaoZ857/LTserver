@@ -1,4 +1,4 @@
-package com.example.ltserver;
+package test.file;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

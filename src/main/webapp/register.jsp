@@ -15,13 +15,13 @@
 <h1>register</h1>
 <form action="RegistServlet" method="post">
     <p>Name:<label>
-        <input type="text" name="Name">
+        <input type="text" name="name">
     </label></p>
     <p>E-mail:<label>
         <input type="text" name="email">
     </label></p>
     <p>Password:<label>
-        <input type="password" name="Password">
+        <input type="password" name="password">
     </label></p>
     <p>Repeat password:<label>
         <input type="password" name="rpwd">
@@ -30,7 +30,7 @@
     <p><a href="login.jsp">go login</a></p><br>
 </form>
 <% String msg;
-msg = (String)request.getAttribute("msg");
+    msg = (String)request.getAttribute("msg");
 out.println(msg);%>
 </body>
 </html>

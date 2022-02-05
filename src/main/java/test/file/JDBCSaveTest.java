@@ -1,4 +1,7 @@
-package com.example.ltserver;
+package test.file;
+
+import com.example.ltserver.User;
+import com.example.ltserver.UserDao;
 
 public class JDBCSaveTest {
     public static void main(String[] args) {

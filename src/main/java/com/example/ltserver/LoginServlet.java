@@ -15,18 +15,18 @@ public class LoginServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
 
         //转换字符串
-        String username = request.getParameter("Name");
-        String password = request.getParameter("Password");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
         //调用UserDao、UserDaoImpl类及方法
         UserDao ud = new UserDao();
 
         //处理结果跳转相应页面
-        boolean flag = ud.checkLogin(username, password);
+        boolean flag = ud.checkLogin(email, password);
         if(flag){
             //将提交的用户名存入session，前台登录成功页面调取
             HttpSession session = request.getSession();
-            session.setAttribute("Name", username);
+            session.setAttribute("email", email);
 
             //登录成功后跳转
             response.sendRedirect("loginSucceed.jsp");

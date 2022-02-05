@@ -13,11 +13,11 @@
 <body>
 <h1>login</h1>
 <form action="LoginServlet" method="post">
-    <p>Name:<label>
-        <input type="text" name="Name">
+    <p>E-mail:<label>
+        <input type="text" name="email">
     </label></p>
     <p>Password:<label>
-        <input type="password" name="Password">
+        <input type="password" name="password">
     </label></p>
     <p><input type="submit" value="login"> <input type="reset" value="reset"></p>
     <p><a href="register.jsp">go register</a></p>

@@ -12,7 +12,7 @@
     <title>login success!</title>
 </head>
 <body>
-<h1>Welcome!${sessionScope.Name}</h1>
+<h1>Welcome!${sessionScope.email}</h1>
 <p><a href="index.jsp">return to index</a></p>
 </body>
 </html>
