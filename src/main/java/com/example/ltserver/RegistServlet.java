@@ -51,7 +51,7 @@ public class RegistServlet extends HttpServlet {
         u.setState(0);
         u.setCode(code);
         u.setTime(new Date());
-//        String context =
+//      String context =
         boolean flag = ud.save(u);
         if(flag){
             response.sendRedirect("activePage.jsp");
