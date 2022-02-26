@@ -19,10 +19,10 @@ public class UserDao{
         String password = user.getPassword();
         int state = user.getState();
         String code = user.getCode();
-        Date time = (Date) user.getTime();
+
 
         conn = DBUtil.getConnection();
-        sql = "insert into students(name,email,password,state,code,time) values('"+name+"','"+email+"','"+password+"','"+state+"','"+code+"','"+time+"')";
+        sql = "insert into students(name,email,password,state,code) values('"+name+"','"+email+"','"+password+"','"+state+"','"+code+"')";
 //        sql = "insert into students(name,email,password) values('"+name+"','"+email+"','"+password+"')";
         pst = conn.prepareStatement(sql);
         int row = pst.executeUpdate();
@@ -88,5 +88,49 @@ public class UserDao{
         return vali;
     }
 
+    public boolean checkUpdate(String code){
+        boolean vali = false;
+        Connection conn;
+        Statement st = null;
+        ResultSet rs = null;
+        String sql ="select * from students where code = '"+ code +"'";
+        conn = DBUtil.getConnection();
+        try{
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()){
+                if(rs.getString("code").equals(code)){
+                    vali = true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtil.close(rs, st, conn);
+        }
+        return vali;
+    }
+
+    public boolean updateByCode(String code) {
+        boolean reply = false;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        try {
+            con = DBUtil.getConnection();
+            String sql = "update students set state = ? where code = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1,1);
+            stmt.setString(2,code);
+            int result =stmt.executeUpdate();
+            if(result>0) {
+                reply=true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(stmt,con);
+        }
+        return reply;
+    }
 
 }

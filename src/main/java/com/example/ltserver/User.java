@@ -1,14 +1,12 @@
 package com.example.ltserver;
 
-import java.util.Date;
-
 public class User {
     protected String username;
     protected String password;
     protected String email;
     protected String code;
     protected int state;
-    protected java.sql.Date time;
+
 
     public String getUsername() {
         return username;
@@ -42,16 +40,7 @@ public class User {
 
     public void setState(int state){this.state=state;}
 
-    public Date getTime(){return time;}
 
-    public void setTime(Date time){this.time= (java.sql.Date) time;}
 
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "username='" + username + '\'' +
-//                ", email='" + email + '\'' +
-//                ", password='" + password + '\'' +
-//                '}';
-//    }
+
 }

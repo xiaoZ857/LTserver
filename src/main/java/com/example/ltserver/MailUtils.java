@@ -28,7 +28,7 @@ public class MailUtils {
             }
         });
         session.setDebug(true);
-        System.out.println("创建邮件");
+
         MimeMessage message = new MimeMessage(session);
         // 发件人
         message.setFrom(new InternetAddress(MY_EMAIL_ACCOUNT));
@@ -40,7 +40,7 @@ public class MailUtils {
         message.setContent(msg, "text/html;charset=UTF-8");
         message.setSentDate(new Date());
         message.saveChanges();
-        System.out.println("准备发送");
+
         Transport.send(message);
 
         return true;

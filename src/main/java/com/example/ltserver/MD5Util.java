@@ -4,7 +4,9 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class MD5Util {public static byte[] encode2bytes(String source) {
+public class MD5Util {
+
+    public static byte[] encode2bytes(String source) {
     byte[] result = null;
     try {
         MessageDigest md = MessageDigest.getInstance("MD5");

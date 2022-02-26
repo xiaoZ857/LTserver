@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
 @WebServlet(name = "RegistServlet", value = "/RegistServlet")
 public class RegistServlet extends HttpServlet {
@@ -50,16 +49,16 @@ public class RegistServlet extends HttpServlet {
         u.setPassword(MD5Util.encode2hex(password));
         u.setState(0);
         u.setCode(code);
-        u.setTime(new Date());
-//      String context =
         boolean flag = ud.save(u);
-        if(flag){
-            response.sendRedirect("activePage.jsp");
+        boolean act = ud.checkActive(email);
+        if(flag&&(!act)){
             try {
-                m.sendMail(email,"L&T project activate URL","please use this URL to activate your account:");
+                m.sendMail(email,"L&T project activate url", "http://localhost:8080/LTserver_war_exploded/ActiveServlet?code="+code+"");
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
+            request.setAttribute("msg", "please activate your account in your email");
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
         }else{
             request.setAttribute("msg", "the email is exist");
             request.getRequestDispatcher("/register.jsp").forward(request, response);

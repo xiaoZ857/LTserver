@@ -11,6 +11,6 @@
     <title>One last step</title>
 </head>
 <body>
-please go to your E-mail and activate your L&T project account!
+please go to your email to activate the account!
 </body>
 </html>
