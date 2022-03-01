@@ -3,9 +3,10 @@
 <html>
 <head>
     <title>L&T index page</title>
+    <link rel="stylesheet" type="text/css" href="simple.css">
 </head>
 <body>
-Welcome to L&T Project!<br>
-<a href="login.jsp">login</a>&nbsp;<a href="register.jsp">register</a>
+<h1>Welcome to L&T Project!</h1><br>
+<p><a href="login.jsp"><button>login</button></a>&nbsp;<a href="register.jsp"><button>register</button></a></p>
 </body>
 </html>
